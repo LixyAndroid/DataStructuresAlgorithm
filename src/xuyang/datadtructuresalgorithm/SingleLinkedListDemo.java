@@ -44,6 +44,76 @@ public class SingleLinkedListDemo {
 
         //显示
         singleLinkedList.list();
+
+        System.out.println("有效的节点个数 = "+getLength(singleLinkedList.getHead()));
+
+        HeroNode res = findLastIndexNode(singleLinkedList.getHead(),1);
+
+        System.out.println(res);
+    }
+
+
+
+    //查找单链表中的倒数第k个结点 【新浪面试题】
+    //思路
+    /*
+    1，编写一个方法，接收head节点，同时接收一个index
+    2,index表示是倒数第index个节点
+    3，先把链表从头到尾遍历，得到链表的总长度getLength
+    4，得到size后，我们从链表的第一个开始遍历（size-index）个，就可以得到
+    5，如果找到了，则返回该节点，否则返回null
+     */
+    public  static HeroNode findLastIndexNode(HeroNode head,int index){
+        if (head.next == null){
+            return  null; //没有找到
+        }
+
+
+        //第一次遍历得到链表的长度（节点个数）
+        int size = getLength(head);
+
+        //第二次遍历size-index 位置，就是我们倒数的第K个节点
+        //先做一个index的校验
+        if (index <=0 || index >size){
+            return null;
+        }
+        //定义辅助变量,for循环定位到倒数的index
+        HeroNode cur = head.next;
+
+        for (int i = 0; i < size - index; i++){
+            cur = cur.next;
+        }
+        return  cur;
+
+
+    }
+
+
+
+
+
+    //方法：获取到单链表的节点的个数（如果是带头节点的链表，需求不统计头节点）
+
+    /**
+     *
+     * @param head 链表的头节点
+     * @return 返回的就是有效节点的个数
+     */
+
+    public  static  int getLength(HeroNode head){
+        if (head.next == null){ //空链表
+            return 0;
+        }
+
+        int length = 0;
+
+        //定义辅助变量，这里我们没有统计头节点
+        HeroNode cur = head.next;
+        while (cur != null){
+            length++;
+            cur = cur.next;
+        }
+        return length;
     }
 
 
@@ -53,6 +123,12 @@ public class SingleLinkedListDemo {
 class SingleLinkedList {
     //先初始化一个头节点，头节点不要动,不存放具体的数据
     private HeroNode head = new HeroNode(0, "", "");
+
+
+    //返回头节点
+    public HeroNode getHead() {
+        return head;
+    }
 
     //添加节点到单链表
     /*
