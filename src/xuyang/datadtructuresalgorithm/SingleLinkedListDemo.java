@@ -1,5 +1,7 @@
 package xuyang.datadtructuresalgorithm;
 
+import java.util.Stack;
+
 /**
  * @author Li Xuyang
  * date  2019/9/24 22:27
@@ -28,8 +30,13 @@ public class SingleLinkedListDemo {
         System.out.println("原来链表的情况~~~");
         singleLinkedList.list();
 
-        System.out.println("反转链表的情况~~~");
-        reverseList(singleLinkedList.getHead());
+//        System.out.println("反转链表的情况~~~");
+//        reverseList(singleLinkedList.getHead());
+//        singleLinkedList.list();
+        System.out.println("逆序打印的结果~~~，没有改变链表的结果");
+        reversePrint(singleLinkedList.getHead());
+
+        System.out.println("原来链表的情况~~~");
         singleLinkedList.list();
 
      /*
@@ -60,6 +67,32 @@ public class SingleLinkedListDemo {
 
         System.out.println(res);
       */
+    }
+
+
+    //使用栈实现单链表的逆序打印
+    private  static  void  reversePrint(HeroNode head){
+        if (head.next == null){
+            //空链表无法打印
+            return;
+        }
+        //创建一个栈，将各个节点压入栈中
+        Stack<HeroNode> stack = new Stack<HeroNode>();
+        HeroNode cur = head.next;
+        //将链表的所有节点压入栈中
+        while (cur != null){
+            //压入
+            stack.push(cur);
+            //cur后移，这样就可以压入下一个节点
+            cur = cur.next;
+        }
+
+        //将栈中的节点进行打印
+        while (stack.size() >0){
+            System.out.println(stack.pop());
+        }
+
+
     }
 
 
