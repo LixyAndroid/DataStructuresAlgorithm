@@ -18,12 +18,21 @@ public class SingleLinkedListDemo {
 
         //创建要给链表
         SingleLinkedList singleLinkedList = new SingleLinkedList();
-        //加入
-//        singleLinkedList.add(hero1);
-//        singleLinkedList.add(hero2);
-//        singleLinkedList.add(hero3);
-//        singleLinkedList.add(hero4);
 
+
+        //加入
+        singleLinkedList.add(hero1);
+        singleLinkedList.add(hero2);
+        singleLinkedList.add(hero3);
+        singleLinkedList.add(hero4);
+        System.out.println("原来链表的情况~~~");
+        singleLinkedList.list();
+
+        System.out.println("反转链表的情况~~~");
+        reverseList(singleLinkedList.getHead());
+        singleLinkedList.list();
+
+     /*
         //加入按照编号
         singleLinkedList.addByOrder(hero1);
         singleLinkedList.addByOrder(hero4);
@@ -50,6 +59,40 @@ public class SingleLinkedListDemo {
         HeroNode res = findLastIndexNode(singleLinkedList.getHead(),1);
 
         System.out.println(res);
+      */
+    }
+
+
+
+    //单链表的反转【腾讯面试题，有点难度】
+    public  static  void  reverseList(HeroNode head){
+        //如果当前链表为空，或者只有一个节点，则无需反转，直接返回
+        if (head.next == null || head.next.next ==null){
+            return;
+        }
+
+
+        //定义一个辅助直接变量，帮助我们遍历原来的链表
+
+        HeroNode cur = head.next;
+        //指向当前节点[cur]的下一个节点
+        HeroNode next = null;
+        HeroNode reverseHead = new HeroNode(0,"","");
+
+        //遍历原来的链表，每遍历一个节点，将其取出，并放在新的链表reverseHead的最前端
+        while (cur != null){
+            //先暂时保存当前节点的下一个节点，因为后面需要使用
+            next = cur.next;
+            //将cur的下一个节点指向新的链表的最前端
+            cur.next = reverseHead.next;
+
+            //将cur链接到新的链表上
+            reverseHead.next = cur;
+            //让cur后移
+            cur = next;
+        }
+        //将head.next指向reverseHead.next，实现单链表反转
+        head.next = reverseHead.next;
     }
 
 
@@ -87,9 +130,6 @@ public class SingleLinkedListDemo {
 
 
     }
-
-
-
 
 
     //方法：获取到单链表的节点的个数（如果是带头节点的链表，需求不统计头节点）
