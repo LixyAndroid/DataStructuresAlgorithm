@@ -1,4 +1,4 @@
-package xuyang.datadtructuresalgorithm;
+package xuyang.datadtructuresalgorithm.queue;
 
 import java.util.Scanner;
 

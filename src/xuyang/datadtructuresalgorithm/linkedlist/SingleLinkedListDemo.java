@@ -1,4 +1,4 @@
-package xuyang.datadtructuresalgorithm;
+package xuyang.datadtructuresalgorithm.linkedlist;
 
 import java.util.Stack;
 

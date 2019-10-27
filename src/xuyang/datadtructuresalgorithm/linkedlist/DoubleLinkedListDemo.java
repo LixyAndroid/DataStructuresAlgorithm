@@ -1,4 +1,6 @@
-package xuyang.datadtructuresalgorithm;
+package xuyang.datadtructuresalgorithm.linkedlist;
+
+
 
 /**
  * @author Li Xuyang
