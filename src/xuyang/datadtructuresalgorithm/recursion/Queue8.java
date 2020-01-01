@@ -3,6 +3,7 @@ package xuyang.datadtructuresalgorithm.recursion;
 /**
  * @author Li Xuyang
  * @date 2020/1/1 16:46
+ * 一维数组解决8皇后问题
  */
 public class Queue8 {
 
