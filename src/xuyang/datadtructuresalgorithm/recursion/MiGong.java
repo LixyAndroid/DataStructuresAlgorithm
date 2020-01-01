@@ -26,8 +26,8 @@ public class MiGong {
         map[3][1]=1;
         map[3][2]=1;
         //堵死
-        map[1][2]=1;
-        map[2][2]=1;
+//        map[1][2]=1;
+//        map[2][2]=1;
 
         //输出地图
         System.out.println("地图的情况：");
@@ -74,17 +74,46 @@ public class MiGong {
      */
     public  static  boolean setWay(int[][] map, int i,int j){
 
+
+//        if (map[6][5] ==2){  //通路已经找到
+//            return  true;
+//        }else {
+//            if (map[i][j] == 0){ //如果当前这个点还没有走过
+//                //按照策略 下->右->上->左 走
+//                map[i][j] =2; //假定该点可以走通
+//                if (setWay(map,i+1,j)){//向下走
+//                    return true;
+//                }else if(setWay(map,i,j+1)){ //向右走
+//                    return true;
+//                }else if(setWay(map,i-1,j)){ //向上走
+//                    return true;
+//                }else if(setWay(map,i,j-1)){ //向左走
+//                    return true;
+//                }else {
+//                    //说是该点是走不通的，是死路
+//                    map[i][j] =3;
+//                    return false;
+//                }
+//
+//            }else {//如果map[i][j] !=0,可能1，2，3
+//                return  false;
+//
+//            }
+//        }
+//    }
+
+        //修改找路的策略，改成上右下左
         if (map[6][5] ==2){  //通路已经找到
             return  true;
         }else {
             if (map[i][j] == 0){ //如果当前这个点还没有走过
-                //按照策略 下->右->上->左 走
+                //按照策略 上右下左  走
                 map[i][j] =2; //假定该点可以走通
-                if (setWay(map,i+1,j)){//向下走
+                if (setWay(map,i-1,j)){//向上走
                     return true;
                 }else if(setWay(map,i,j+1)){ //向右走
                     return true;
-                }else if(setWay(map,i-1,j)){ //向上走
+                }else if(setWay(map,i+1,j)){ //向下走
                     return true;
                 }else if(setWay(map,i,j-1)){ //向左走
                     return true;
