@@ -39,8 +39,8 @@ public class InsertSort {
         String date2Str = simpleDateFormat.format(date2);
         System.out.println("排序后的时间是 ： " + date2Str);
 
-        System.out.println("排序后：");
-        System.out.println(Arrays.toString(arr));
+//        System.out.println("排序后：");
+//        System.out.println(Arrays.toString(arr));
     }
 
     //插入排序
