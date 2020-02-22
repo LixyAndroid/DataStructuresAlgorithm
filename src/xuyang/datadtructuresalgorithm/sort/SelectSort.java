@@ -11,7 +11,7 @@ import java.util.Date;
 public class SelectSort {
     public static void main(String[] args) {
 
-       // int[] arr = {101,34,119,1};
+        // int[] arr = {101,34,119,1};
 
 
         //创建个80000个随机的数组
@@ -19,7 +19,7 @@ public class SelectSort {
         int[] arr = new int[80000];
 
         for (int i = 0; i < 80000; i++) {
-            arr[i] = (int)(Math.random()*8000000); //生成[0,8000000)
+            arr[i] = (int) (Math.random() * 8000000); //生成[0,8000000)
         }
 
         Date date1 = new Date();
@@ -27,11 +27,8 @@ public class SelectSort {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
 
-
-
         System.out.println("排序前");
         System.out.println(Arrays.toString(arr));
-
 
 
         String date1Str = simpleDateFormat.format(date1);
@@ -47,12 +44,11 @@ public class SelectSort {
         System.out.println(Arrays.toString(arr));
 
 
-
     }
 
     //选择排序
 
-    public  static  void  selectSort(int[] arr){
+    public static void selectSort(int[] arr) {
 
 
         //在推到的过程中，我们发现了规律，因此，可以使用for来解决
@@ -150,8 +146,6 @@ public class SelectSort {
 //        System.out.println("第三轮后~~");
 //        System.out.println(Arrays.toString(arr));//1，34，101，119
 //
-
-
 
 
     }
