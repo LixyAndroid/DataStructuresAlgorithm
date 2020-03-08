@@ -128,6 +128,7 @@ public class BubbleSort {
                 //如果前面的数比后面的数大，则交换
                 if (arr[j] > arr[j + 1]) {
 
+
                     flag  = true;
                     temp = arr[j];
                     arr[j] = arr[j + 1];
