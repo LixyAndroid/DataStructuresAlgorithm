@@ -7,6 +7,7 @@ import java.util.Date;
 /**
  * @author Li Xuyang
  * @date 2020/3/9 11:02
+ * 负数不支持
  */
 public class RadixSort {
     public static void main(String[] args) {
