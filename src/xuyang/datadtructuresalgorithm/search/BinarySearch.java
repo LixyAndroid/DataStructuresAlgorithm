@@ -42,7 +42,7 @@ public class BinarySearch {
             //向右递归
             return binarySearch(arr, mid + 1, right, findVal);
         } else if (findVal < midVal) {
-            //向右递归
+            //向左递归
             return binarySearch(arr, left, mid - 1, findVal);
         } else {
             return mid;
