@@ -59,13 +59,10 @@ public class QuickSort {
             while (arr[l] < pivot) {
                 l += 1;
             }
-
             //在pivot的右边一直找，找到小于等于pivot的值，才退出
             while (pivot < arr[r]) {
                 r -= 1;
             }
-
-
             //如果l>=r 说明pivot的左右两的值，已经按照左边全部满足是
             //小于等于pivot值，右边全部是大于等于pivot值
             if (l >= r) {

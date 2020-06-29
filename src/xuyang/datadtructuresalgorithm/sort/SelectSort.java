@@ -52,7 +52,7 @@ public class SelectSort {
 
 
         //在推到的过程中，我们发现了规律，因此，可以使用for来解决
-//选择排序的时间复杂度依旧是0(n^2)
+        //选择排序的时间复杂度依旧是0(n^2)
         for (int i = 0; i < arr.length - 1; i++) {
 
 
