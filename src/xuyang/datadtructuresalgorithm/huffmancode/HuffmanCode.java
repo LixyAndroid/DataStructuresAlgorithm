@@ -20,6 +20,61 @@ public class HuffmanCode {
         System.out.println("前序遍历");
         preOrder(huffmanTreeNodeRoot);
 
+
+        //测试
+
+        Map<Byte,String> huffmanCodes =  getCodes(huffmanTreeNodeRoot);
+        System.out.println("~生成的赫夫曼编码表：" + huffmanCodes);
+
+
+    }
+
+    //生成赫夫曼树对应的赫夫曼编码
+    //思路:
+    //1. 将赫夫曼编码表存放在 Map<Byte,String> 形式
+    //   生成的赫夫曼编码表{32=01, 97=100, 100=11000, 117=11001, 101=1110, 118=11011, 105=101, 121=11010, 106=0010, 107=1111, 108=000, 111=0011}
+    static Map<Byte, String> huffmanCodes = new HashMap<>();
+    static StringBuilder stringBuilder = new StringBuilder();
+
+    //为了调用方便，重载
+    private static Map<Byte, String> getCodes(Node root) {
+        if (root == null) {
+            return null;
+        }
+
+        //处理root的左子树
+        getCodes(root.left, "0", stringBuilder);
+        //处理root的右子树
+        getCodes(root.right, "1", stringBuilder);
+        return huffmanCodes;
+
+    }
+
+    /**
+     * 功能：将传入的node结点的所有叶子结点的赫夫曼编码得到，并放入到huffmanCodes集合
+     *
+     * @param node          传入结点
+     * @param code          路径： 左子结点是 0, 右子结点 1
+     * @param stringBuilder 用于拼接路径
+     */
+    private static void getCodes(Node node, String code, StringBuilder stringBuilder) {
+        StringBuilder stringBuilder2 = new StringBuilder(stringBuilder);
+        //将code 加入到 stringBuilder2
+        stringBuilder2.append(code);
+        if (node != null) { //如果node == null不处理
+            //判断当前node 是叶子结点还是非叶子结点
+            if (node.data == null) { //非叶子结点
+                //递归处理
+                //向左递归
+                getCodes(node.left, "0", stringBuilder2);
+                //向右递归
+                getCodes(node.right, "1", stringBuilder2);
+            } else { //说明是一个叶子结点
+                //就表示找到某个叶子结点的最后
+                huffmanCodes.put(node.data, stringBuilder2.toString());
+            }
+        }
+
     }
 
 
