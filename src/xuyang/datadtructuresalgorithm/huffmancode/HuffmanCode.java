@@ -11,8 +11,10 @@ public class HuffmanCode {
         String content = "i like like like java do you like a java";
         //Ascii码
         byte[] contentBytes = content.getBytes();
-        //System.out.println(Arrays.toString(contentBytes));
+        System.out.println(Arrays.toString(contentBytes));
         System.out.println(contentBytes.length);
+        //分步
+        /*
         List<Node> nodes = getNodes(contentBytes);
         System.out.println("nodes = " + nodes);
 
@@ -31,9 +33,33 @@ public class HuffmanCode {
         byte[] huffmanCodeBytes =  zip(contentBytes,huffmanCodes);
         System.out.println("huffmanCodeBytes = " + Arrays.toString(huffmanCodeBytes));
 
-        ////发送huffmanCodeBytes 数组 */
+        ////发送huffmanCodeBytes 数组
+        */
+        //封装的方法
+        byte[] huffmanCodeBytes =  huffmanZip(contentBytes);
+        System.out.println("压缩后的结果huffmanCodeBytes = " + Arrays.toString(huffmanCodeBytes) + ",长度 = " + huffmanCodeBytes.length);
+    }
+
+    //使用一个方法，将前面的方法封装起来，便于我们的调用.
+    /**
+     *
+     * @param bytes 原始的字符串对应的字节数组
+     * @return 是经过 赫夫曼编码处理后的字节数组(压缩后的数组)
+     */
+
+    private static byte[] huffmanZip(byte[] bytes){
+
+        List<Node> nodes = getNodes(bytes);
+        //根据 nodes 创建的赫夫曼树
+        Node huffmanTreeRoot = createHuffmanTree(nodes);
+        //对应的赫夫曼编码(根据 赫夫曼树)
+        Map<Byte, String> huffmanCodes = getCodes(huffmanTreeRoot);
+        //根据生成的赫夫曼编码，压缩得到压缩后的赫夫曼编码字节数组
+        byte[] huffmanCodeBytes = zip(bytes, huffmanCodes);
+        return huffmanCodeBytes;
 
     }
+
     //编写一个方法，将字符串对应的byte[] 数组，通过生成的赫夫曼编码表，返回一个赫夫曼编码 压缩后的byte[]
     /**
      *
